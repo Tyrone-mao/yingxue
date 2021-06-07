@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.CategoryMapper">
+    <resultMap id="queryMap" type="Category">
+        <id column="cid" property="id"/>
+        <result column="cname" property="cateName"/>
+        <result column="clevels" property="levels"/>
+        <result column="cpid" property="parentId"/>
+        <collection property="categoryList" javaType="List" ofType="Categorys">
+            <id column="sid" property="id"/>
+            <result column="sname" property="cateName"/>
+            <result column="slevels" property="levels"/>
+            <result column="spid" property="parentId"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryAll" resultMap="queryMap">
+        select
+               c.id cid,c.cate_name cname,c.levels clevels,c.parent_id cpid,
+               s.id sid,s.cate_name sname,s.levels slevels,s.parent_id spid
+            from yx_category c left join yx_category s
+            on c.id=s.parent_id
+            where c.levels='1'
+    </select>
+</mapper>

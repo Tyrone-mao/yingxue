@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.FeedBackMapper">
+
+    <resultMap id="fbmap" type="FeedBack">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="feed_time" property="feedTime"/>
+        <result column="user_id" property="userId"/>
+        
+        <association property="user" javaType="User">
+            <id column="id" property="id"/>
+            <result column="phone" property="phone"/>
+            <result column="head_img" property="headImg"/>
+            <result column="name" property="name"/>
+            <result column="sign" property="sign"/>
+            <result column="wechat" property="wechat"/>
+            <result column="status" property="status"/>
+            <result column="regist_time" property="registTime"/>
+        </association>
+    </resultMap>
+
+    <select id="queryAll" resultMap="fbmap">
+        select f.id,f.title,f.content,f.feed_time,f.user_id,
+               u.id,u.phone,u.head_img,u.name,u.sign,u.wechat,u.status,u.regist_time
+        from yx_feedback f join  yx_user u
+        on f.user_id = u.id
+        limit #{page},#{rows}
+
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.VideoMapper">
+    <select id="queryByReleaseTime" resultType="com.baizhi.vo.VideoVO">
+        select u.head_img userPhoto,v.id,v.title videoTitle,v.video_path path,v.civer_path cover,
+               v.upload_time uploadTime,v.description,c.cate_name cateName
+          from yx_user u right join  yx_video v
+          on u.id=v.user_id left join  yx_category c
+          on v.cate_id=c.id
+          order by v.upload_time desc
+    </select>
+
+    <select id="queryCateVideoList" resultType="com.baizhi.vo.VideoCateVO" parameterType="String">
+        select u.name UserName,v.id,v.title videoTitle,v.video_path path,v.civer_path cover,
+               v.upload_time uploadTime,v.description,v.user_id userId,c.cate_name cateName,c.id categoryId
+        from yx_user u right join  yx_video v
+        on u.id=v.user_id left join  yx_category c
+        on v.cate_id=c.id where v.cate_id=#{cataId}
+        order by v.upload_time desc
+    </select>
+</mapper>
