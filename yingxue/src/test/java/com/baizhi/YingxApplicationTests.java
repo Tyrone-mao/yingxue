@@ -9,7 +9,8 @@ import com.baizhi.service.UserService;
 import com.baizhi.utils.UUIDUtil;
 import com.baizhi.vo.VideoVO;
 import org.apache.ibatis.session.RowBounds;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

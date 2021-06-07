@@ -9,7 +9,8 @@ import com.baizhi.entity.Category;
 import com.baizhi.entity.User;
 import com.baizhi.service.UserService;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

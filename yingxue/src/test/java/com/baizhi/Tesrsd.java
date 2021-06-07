@@ -2,7 +2,8 @@ package com.baizhi;
 
 import com.baizhi.dao.UserMapper;
 import com.baizhi.entity.User;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
